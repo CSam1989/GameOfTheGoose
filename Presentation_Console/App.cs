@@ -9,31 +9,25 @@ namespace Presentation_Console
 {
     public class App
     {
-        private readonly IGame _game;
         private readonly IGameController _gameController;
-        private readonly IIOService _ioService;
+        private readonly IIOService _io;
         private readonly IInputWithValidationService _input;
 
         public App(
             IGame game,
             IGameController gameController,
-            IIOService ioService,
+            IIOService io,
             IInputWithValidationService input)
         {
-            _game = game;
             _gameController = gameController;
-            _ioService = ioService;
+            _io = io;
             _input = input;
         }
 
         // Equivalent to Main in Program.cs
         public void Run()
         {
-            //Adding events to runtime
-            _game.InputMessage += _ioService.InputMessage;
-            _game.OutputMessage += _ioService.OutputMessage;
-            _game.OutputNewLineMessage += _ioService.OutputWithNewLineMessage;
-            _game.WaitForKey += _ioService.WaitForKey;
+            _io.OutputWithNewLineMessage($"Welcome to a game of goose! {Environment.NewLine}");
 
             var playerCount = _input.InputPlayerCount();
 

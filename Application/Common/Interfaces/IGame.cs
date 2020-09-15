@@ -10,9 +10,6 @@ namespace Application.Common.Interfaces
         ICollection<Player> PlayersInWell { get; set; }
         Board Board { get; set; }
         int Turn { get; set; }
-        event OutputDelegate OutputMessage;
-        event OutputWithNewlineDelegate OutputNewLineMessage;
-        event InputDelegate InputMessage;
-        event WaitDelegate WaitForKey;
+        bool HasWinner { get; set; }
     }
 }

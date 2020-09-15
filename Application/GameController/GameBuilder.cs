@@ -23,5 +23,16 @@ namespace Application.GameController
                 board.Spaces[i] = _modelFactory.CreateSpace(i + 1);
             }
         }
+
+        public ICollection<Player> AddPlayers(int count)
+        {
+            var pieces = new List<Player>();
+
+            for (int i = 1; i <= count; i++)
+            {
+                pieces.Add(_modelFactory.CreatePlayer($"PIECE {i}"));
+            }
+            return pieces;
+        }
     }
 }

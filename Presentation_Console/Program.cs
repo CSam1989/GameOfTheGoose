@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Application.Common.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,8 +29,8 @@ namespace Presentation_Console
             services.AddSingleton(config);
 
             // AppConfig to IOC Container
-            //var appConfig = config.GetSection("BoardSettings").Get<AppConfig>();
-            //services.AddSingleton(appConfig);
+            var appConfig = config.GetSection("BoardSettings").Get<AppConfig>();
+            services.AddSingleton(appConfig);
 
             //Add Services To IOC Container
             //services.AddTransient<IInputService, InputService>();

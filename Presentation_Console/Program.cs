@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Application.Common.Extensions;
 using Application.Common.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,7 +22,7 @@ namespace Presentation_Console
             IServiceCollection services = new ServiceCollection();
 
             //Add services from other layers
-            //services.AddApplication();
+            services.AddApplication();
 
             //Add Settings to IOC Container
             var config = LoadConfiguration();
@@ -33,7 +34,6 @@ namespace Presentation_Console
             services.AddSingleton(appConfig);
 
             //Add Services To IOC Container
-            //services.AddTransient<IInputService, InputService>();
 
             services.AddTransient<App>();
 

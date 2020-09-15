@@ -8,7 +8,7 @@ namespace Application.Models
     {
         public int Number { get; set; }
 
-        public void Act(Player player)
+        public virtual void Act(Player player)
         {
 
         }

@@ -18,11 +18,6 @@ namespace Application.Common.Factories
             this._config = config;
         }
 
-        public Game CreateGame()
-        {
-            return new Game();
-        }
-
         public Board CreateBoard()
         {
             return new Board();

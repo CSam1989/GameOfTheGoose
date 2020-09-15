@@ -7,6 +7,11 @@ namespace Application.Models
 {
     public class Player
     {
+        public Player(string name)
+        {
+            Name = name;
+        }
+
         public string Name { get; set; }
         public Space Position { get; set; }
         public int SkipCount { get; set; }

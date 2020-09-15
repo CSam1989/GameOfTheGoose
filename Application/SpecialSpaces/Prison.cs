@@ -7,6 +7,10 @@ namespace Application.SpecialSpaces
 {
     public class Prison: Space
     {
+        public Prison(int number) : base(number)
+        {
+        }
+
         public override void Act(Player player)
         {
             base.Act(player);

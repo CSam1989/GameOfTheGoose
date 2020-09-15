@@ -7,6 +7,10 @@ namespace Application.SpecialSpaces
 {
     public class Well: Space
     {
+        public Well(int number) : base(number)
+        {
+        }
+
         public override void Act(Player player)
         {
             base.Act(player);

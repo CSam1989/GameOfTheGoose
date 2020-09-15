@@ -7,6 +7,10 @@ namespace Application.SpecialSpaces
 {
     public class Inn: Space
     {
+        public Inn(int number) : base(number)
+        {
+        }
+
         public override void Act(Player player)
         {
             base.Act(player);

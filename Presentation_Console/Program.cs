@@ -1,8 +1,10 @@
 ﻿using System.IO;
 using Application.Common.Extensions;
+using Application.Common.Interfaces;
 using Application.Common.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation_Console.Common.Services;
 
 namespace Presentation_Console
 {
@@ -34,6 +36,7 @@ namespace Presentation_Console
             services.AddSingleton(appConfig);
 
             //Add Services To IOC Container
+            services.AddTransient<IIOService, IOService>();
 
             services.AddTransient<App>();
 

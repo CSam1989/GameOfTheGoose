@@ -12,15 +12,18 @@ namespace Presentation_Console
         private readonly IGame _game;
         private readonly IGameController _gameController;
         private readonly IIOService _ioService;
+        private readonly IInputWithValidationService _input;
 
         public App(
             IGame game,
             IGameController gameController,
-            IIOService ioService)
+            IIOService ioService,
+            IInputWithValidationService input)
         {
             _game = game;
             _gameController = gameController;
             _ioService = ioService;
+            _input = input;
         }
 
         // Equivalent to Main in Program.cs
@@ -32,7 +35,9 @@ namespace Presentation_Console
             _game.OutputNewLineMessage += _ioService.OutputWithNewLineMessage;
             _game.WaitForKey += _ioService.WaitForKey;
 
-            _gameController.Run(4);
+            var playerCount = _input.InputPlayerCount();
+
+            _gameController.Run(playerCount);
             //Adds global exception handling
             //AppDomain.CurrentDomain.UnhandledException += _exceptionHandler.UnhandledExceptionTrapper;
 

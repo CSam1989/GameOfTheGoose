@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Application.Common.Factories;
 using Application.Common.Interfaces;
-using Application.GameController;
+using Application.Common.Services;
 using Application.GameController;
 using Application.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +20,8 @@ namespace Application.Common.Extensions
             services.AddSingleton<IGame, Game>();
             services.AddTransient<IGameBuilder, GameBuilder>();
             services.AddTransient<IGameController, Director>();
+
+            services.AddTransient<IValidationService, ValidationService>();
 
             return services;
         }

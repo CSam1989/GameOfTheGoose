@@ -37,6 +37,7 @@ namespace Presentation_Console
 
             //Add Services To IOC Container
             services.AddTransient<IIOService, IOService>();
+            services.AddTransient<IInputWithValidationService, InputWithValidationService>();
 
             services.AddTransient<App>();
 

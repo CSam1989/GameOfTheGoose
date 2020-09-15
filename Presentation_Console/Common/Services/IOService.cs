@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Settings;
 
 namespace Presentation_Console.Common.Services
 {

@@ -15,7 +15,7 @@ namespace Application.SpecialSpaces
 
         public override void Act(Player player, IGame game)
         {
-            player.Position = game.Board.Spaces[SpecialPlaceSettings.MazeToGoSpace - 1];
+            player.Position = game.Board.Spaces[SpecialPlaceSettings.MazeToGoSpace];
 
             // TODO: Change the Console write to ioService 
             Console.Write($" -> S{player.Position.Number}");

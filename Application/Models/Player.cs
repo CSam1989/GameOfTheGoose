@@ -20,11 +20,11 @@ namespace Application.Models
 
         public void MovePosition(Board board)
         {
-            var indexNewPosition = Position.Number -1 + CurrentDiceThrow.Sum();
+            var indexNewPosition = Position.Number + CurrentDiceThrow.Sum();
 
             //Extra logic for when piece is above the end space
             if (indexNewPosition >= BoardSettings.MaxSpaces)
-                indexNewPosition -= (indexNewPosition - BoardSettings.MaxSpaces +1) * 2;
+                indexNewPosition -= (indexNewPosition - BoardSettings.MaxSpaces) * 2;
 
             Position = board.Spaces[indexNewPosition];
         }

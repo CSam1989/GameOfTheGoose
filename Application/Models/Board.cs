@@ -9,7 +9,7 @@ namespace Application.Models
     {
         public Board()
         {
-            Spaces = new Space[BoardSettings.MaxSpaces];
+            Spaces = new Space[BoardSettings.MaxSpaces + 1];// max spaces + starting space (=0)
         }
         public Space[] Spaces { get; set; }
     }

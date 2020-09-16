@@ -20,7 +20,7 @@ namespace Application.GameController
         {
             for (int i = 0; i < board.Spaces.Length; i++)
             {
-                board.Spaces[i] = _modelFactory.CreateSpace(i + 1);
+                board.Spaces[i] = _modelFactory.CreateSpace(i);
             }
         }
 

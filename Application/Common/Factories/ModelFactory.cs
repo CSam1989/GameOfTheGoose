@@ -36,7 +36,11 @@ namespace Application.Common.Factories
 
         public Player CreatePlayer(string name)
         {
-            return new Player(name);
+            return new Player
+            {
+                Name = name,
+                Position = CreateSpace(0)
+            };
         }
     }
 }

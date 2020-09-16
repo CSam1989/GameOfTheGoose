@@ -8,23 +8,23 @@ namespace Application.Models
 {
     public class Player
     {
-        public Player(string name)
+        public Player()
         {
-            Name = name;
+            CurrentDiceThrow = new[] {0, 0}; //start of game, player hasn't thrown yet
         }
-
         public string Name { get; set; }
+        public int[] CurrentDiceThrow { get; set; }
         public Space Position { get; set; }
         public int SkipCount { get; set; }
         public bool IsInWell { get; set; }
 
-        public void MovePosition(int[] dice, Board board)
+        public void MovePosition(Board board)
         {
-            var indexNewPosition = Position.Number + dice.Sum();
+            var indexNewPosition = Position.Number -1 + CurrentDiceThrow.Sum();
 
             //Extra logic for when piece is above the end space
-            if (indexNewPosition > BoardSettings.MaxSpaces)
-                indexNewPosition -= (indexNewPosition - BoardSettings.MaxSpaces) * 2;
+            if (indexNewPosition >= BoardSettings.MaxSpaces)
+                indexNewPosition -= (indexNewPosition - BoardSettings.MaxSpaces +1) * 2;
 
             Position = board.Spaces[indexNewPosition];
         }

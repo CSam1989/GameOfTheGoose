@@ -6,13 +6,16 @@ namespace Application.SpecialSpaces
 {
     public class Maze : Space
     {
-        public Maze(int number) : base(number)
+        private readonly AppConfig _config;
+
+        public Maze(int number, AppConfig config) : base(number)
         {
+            _config = config;
         }
 
         public override void Act(Player player, IGame game)
         {
-            player.Position = game.Board.Spaces[SpecialPlaceSettings.MazeToGoSpace];
+            player.Position = game.Board.Spaces[_config.SpecialPlaceSettings.MazeToGoSpace];
 
             game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
         }

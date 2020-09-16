@@ -6,15 +6,18 @@ namespace Application.SpecialSpaces
 {
     public class Inn : Space
     {
-        public Inn(int number) : base(number)
+        private readonly AppConfig _config;
+
+        public Inn(int number, AppConfig config) : base(number)
         {
+            _config = config;
         }
 
         public override void Act(Player player, IGame game)
         {
-            player.SkipCount = SpecialPlaceSettings.InnSkipCount;
+            player.SkipCount = _config.SpecialPlaceSettings.InnSkipCount;
 
-            game.MessageEvents.OnOutput($"-> Skip {SpecialPlaceSettings.InnSkipCount}");
+            game.MessageEvents.OnOutput($"-> Skip {player.SkipCount}");
         }
     }
 }

@@ -7,13 +7,16 @@ namespace Presentation_Console.Common.Services
     {
         private readonly IIOService _ioService;
         private readonly IValidationService _validation;
+        private readonly AppConfig _config;
 
         public InputWithValidationService(
             IIOService ioService,
-            IValidationService validation)
+            IValidationService validation,
+            AppConfig config)
         {
             _ioService = ioService;
             _validation = validation;
+            _config = config;
         }
 
         public int InputPlayerCount()
@@ -24,7 +27,7 @@ namespace Presentation_Console.Common.Services
             do
             {
                 _ioService.OutputMessage(
-                    $"How many players want to join this game? (min {PlayerAmount.Min} & max {PlayerAmount.Max}): ");
+                    $"How many players want to join this game? (min {_config.Settings.MinPlayers} & max {_config.Settings.MaxPlayers}): ");
                 input = _ioService.InputMessage();
             } while (!_validation.IsValidNumber(input, out playerCount) ||
                      !_validation.IsValidNumberOfPieces(playerCount));

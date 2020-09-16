@@ -6,15 +6,18 @@ namespace Application.SpecialSpaces
 {
     public class Prison : Space
     {
-        public Prison(int number) : base(number)
+        private readonly AppConfig _config;
+
+        public Prison(int number, AppConfig config) : base(number)
         {
+            _config = config;
         }
 
         public override void Act(Player player, IGame game)
         {
-            player.SkipCount = SpecialPlaceSettings.PrisonSkipCount;
+            player.SkipCount = _config.SpecialPlaceSettings.PrisonSkipCount;
 
-            game.MessageEvents.OnOutput($"-> Skip {SpecialPlaceSettings.PrisonSkipCount}");
+            game.MessageEvents.OnOutput($"-> Skip {player.SkipCount}");
         }
     }
 }

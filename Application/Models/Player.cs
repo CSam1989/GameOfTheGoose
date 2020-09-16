@@ -5,8 +5,11 @@ namespace Application.Models
 {
     public class Player
     {
-        public Player()
+        private readonly AppConfig _config;
+
+        public Player(AppConfig config)
         {
+            _config = config;
             CurrentDiceThrow = new[] {0, 0}; //start of game, player hasn't thrown yet
         }
 
@@ -21,8 +24,8 @@ namespace Application.Models
             var indexNewPosition = Position.Number + CurrentDiceThrow.Sum();
 
             //Extra logic for when piece is above the end space
-            if (indexNewPosition >= BoardSettings.MaxSpaces)
-                indexNewPosition -= (indexNewPosition - BoardSettings.MaxSpaces) * 2;
+            if (indexNewPosition >= _config.Settings.MaxSpaces)
+                indexNewPosition -= (indexNewPosition - _config.Settings.MaxSpaces) * 2;
 
             Position = board.Spaces[indexNewPosition];
         }

@@ -33,7 +33,7 @@ namespace Presentation_Console
             services.AddSingleton(config);
 
             // AppConfig to IOC Container
-            var appConfig = config.GetSection("BoardSettings").Get<AppConfig>();
+            var appConfig = config.GetSection("GameSettings").Get<AppConfig>();
             services.AddSingleton(appConfig);
 
             //Add Services To IOC Container

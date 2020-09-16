@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using Application.Common.Interfaces.Models;
+using Application.Common.Settings;
 using Application.Models;
 
 namespace Application.SpecialSpaces
 {
     public class Well : Space
     {
-        public Well(int number) : base(number)
+        public Well(int number, AppConfig config) : base(number)
         {
         }
 

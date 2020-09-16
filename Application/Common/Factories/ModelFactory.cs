@@ -18,24 +18,24 @@ namespace Application.Common.Factories
 
         public Board CreateBoard()
         {
-            return new Board();
+            return new Board(_config);
         }
 
         public Space CreateSpace(int spaceNumber)
         {
-            foreach (var specialSpace in _config.Spaces.SpecialSpaces)
+            foreach (var specialSpace in _config.SpecialSpaces)
                 if (specialSpace.Space == spaceNumber)
                     return (Space) Activator.CreateInstance(
-                        Type.GetType($"Application.SpecialSpaces.{specialSpace.Name}"), spaceNumber);
+                        Type.GetType($"Application.SpecialSpaces.{specialSpace.Name}"), new object[] {spaceNumber, _config});
 
-            return _config.Spaces.GoozeSpaces.Any(goosePlace => goosePlace == spaceNumber)
-                ? new Goose(spaceNumber)
+            return _config.GooseSpaces.Any(goosePlace => goosePlace == spaceNumber)
+                ? new Goose(spaceNumber, _config)
                 : new Space(spaceNumber);
         }
 
         public Player CreatePlayer(string name)
         {
-            return new Player
+            return new Player(_config)
             {
                 Name = name,
                 Position = CreateSpace(0)

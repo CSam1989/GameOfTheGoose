@@ -7,8 +7,11 @@ namespace Application.SpecialSpaces
 {
     public class Goose : Space
     {
-        public Goose(int number) : base(number)
+        private readonly AppConfig _config;
+
+        public Goose(int number, AppConfig config) : base(number)
         {
+            _config = config;
         }
 
         public override void Act(Player player, IGame game)
@@ -30,7 +33,7 @@ namespace Application.SpecialSpaces
 
         private bool ActOnSpecialThrow(Player player, IGame game)
         {
-            foreach (var specialThrow in SpecialPlaceSettings.SpecialGooseThrows)
+            foreach (var specialThrow in _config.SpecialPlaceSettings.SpecialGooseThrows)
             {
                 if (game.Turn != specialThrow[0] || !player.CurrentDiceThrow.Contains(specialThrow[1]) ||
                     !player.CurrentDiceThrow.Contains(specialThrow[2])) continue;

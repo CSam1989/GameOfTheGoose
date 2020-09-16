@@ -6,13 +6,16 @@ namespace Application.SpecialSpaces
 {
     public class Bridge : Space
     {
-        public Bridge(int number) : base(number)
+        private readonly AppConfig _config;
+
+        public Bridge(int number, AppConfig config) : base(number)
         {
+            _config = config;
         }
 
         public override void Act(Player player, IGame game)
         {
-            player.Position = game.Board.Spaces[SpecialPlaceSettings.BridgeToGoSpace];
+            player.Position = game.Board.Spaces[_config.SpecialPlaceSettings.BridgeToGoSpace];
 
             game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
         }

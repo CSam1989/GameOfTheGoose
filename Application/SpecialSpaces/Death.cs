@@ -6,13 +6,16 @@ namespace Application.SpecialSpaces
 {
     public class Death : Space
     {
-        public Death(int number) : base(number)
+        private readonly AppConfig _config;
+
+        public Death(int number, AppConfig config) : base(number)
         {
+            _config = config;
         }
 
         public override void Act(Player player, IGame game)
         {
-            player.Position = game.Board.Spaces[SpecialPlaceSettings.DeathToGoSpace];
+            player.Position = game.Board.Spaces[_config.SpecialPlaceSettings.DeathToGoSpace];
 
             game.MessageEvents.OnOutput("-> Start");
         }

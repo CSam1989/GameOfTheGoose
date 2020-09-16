@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Application.Common.Interfaces;
 
 namespace Application.Models
 {
@@ -12,9 +13,6 @@ namespace Application.Models
         }
         public int Number { get; set; }
 
-        public virtual void Act(Player player)
-        {
-            Console.WriteLine($"{Number}: Space test");
-        }
+        public virtual void Act(Player player, IGame game) { }
     }
 }

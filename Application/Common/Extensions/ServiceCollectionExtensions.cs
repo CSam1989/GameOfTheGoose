@@ -17,11 +17,12 @@ namespace Application.Common.Extensions
             //Add Services To IOC Container
             services.AddTransient<IModelFactory, ModelFactory>();
 
-            services.AddSingleton<IGame, Game>();
+            services.AddSingleton<IGame, Game>(); //Singleton because it has state
             services.AddTransient<IGameBuilder, GameBuilder>();
             services.AddTransient<IGameController, Director>();
 
             services.AddTransient<IValidationService, ValidationService>();
+            services.AddTransient<IDiceService, DiceService>();
 
             return services;
         }

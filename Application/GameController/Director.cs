@@ -10,7 +10,6 @@ namespace Application.GameController
 {
     public class Director : IGameController
     {
-        private readonly IIOService _io;
         private readonly IModelFactory _modelFactory;
         private readonly IGameBuilder _builder;
         private readonly IGameService _gameService;
@@ -19,13 +18,11 @@ namespace Application.GameController
 
         public Director(
             IGame game,
-            IIOService io,
             IModelFactory modelFactory,
             IGameBuilder builder,
             IGameService gameService,
             IWinnerService winnerService)
         {
-            _io = io;
             _modelFactory = modelFactory;
             _builder = builder;
             _gameService = gameService;
@@ -41,7 +38,7 @@ namespace Application.GameController
 
             Game.Players = _builder.AddPlayers(playerCount);
 
-            _io.OutputWithNewLineMessage(Game.Players.Aggregate(
+            Game.MessageEvents.OnOutputWithNewline(Game.Players.Aggregate(
                                              "",
                                              (current, piece) => current + $"{piece.Name}".PadLeft(20))
                                          + Environment.NewLine);
@@ -49,16 +46,16 @@ namespace Application.GameController
             while (!Game.HasWinner)
             {
                 Game.Turn++;
-                _io.OutputWithNewLineMessage($"[PRESS ENTER TO PLAY TURN {Game.Turn}]");
-                _io.WaitForKey();
-                _io.OutputWithNewLineMessage($"Turn {Game.Turn} {Environment.NewLine}");
+                Game.MessageEvents.OnOutputWithNewline($"[PRESS ENTER TO PLAY TURN {Game.Turn}]");
+                Game.MessageEvents.OnWait();
+                Game.MessageEvents.OnOutputWithNewline($"Turn {Game.Turn} {Environment.NewLine}");
 
                 _gameService.MovePieces(Game.Players);
             }
 
             _winnerService.PrintWinner();
-            _io.OutputMessage("[PRESS ENTER TO FINISH GAME]");
-            _io.WaitForKey();
+            Game.MessageEvents.OnOutput("[PRESS ENTER TO FINISH GAME]");
+            Game.MessageEvents.OnWait();
         }
     }
 }

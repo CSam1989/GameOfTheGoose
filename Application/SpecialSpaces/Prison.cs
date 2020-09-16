@@ -17,8 +17,7 @@ namespace Application.SpecialSpaces
         {
             player.SkipCount = SpecialPlaceSettings.PrisonSkipCount;
 
-            // TODO: Change the Console write to ioService 
-            Console.Write($"-> Skip {SpecialPlaceSettings.PrisonSkipCount}");
+            game.MessageEvents.OnOutput($"-> Skip {SpecialPlaceSettings.PrisonSkipCount}");
         }
     }
 }

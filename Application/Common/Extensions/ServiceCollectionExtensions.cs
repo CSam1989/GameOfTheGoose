@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Application.Common.DelegatesEvents;
 using Application.Common.Factories;
 using Application.Common.Interfaces;
 using Application.Common.Services;
@@ -25,6 +26,8 @@ namespace Application.Common.Extensions
             services.AddTransient<IDiceService, DiceService>();
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<IWinnerService, WinnerService>();
+
+            services.AddTransient<IMessageEvents, MessageEvents>();
 
             return services;
         }

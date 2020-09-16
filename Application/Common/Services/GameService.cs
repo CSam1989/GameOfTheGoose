@@ -13,13 +13,11 @@ namespace Application.Common.Services
     public class GameService : IGameService
     {
         private readonly IDiceService _dice;
-        private readonly IIOService _io;
         private readonly IGame _game;
 
-        public GameService(IDiceService dice, IIOService io, IGame game)
+        public GameService(IDiceService dice, IGame game)
         {
             _dice = dice;
-            _io = io;
             _game = game;
         }
 
@@ -29,24 +27,24 @@ namespace Application.Common.Services
             {
                 if (player.SkipCount > 0)
                 {
-                    _io.OutputMessage($"skip {player.SkipCount} turn(s)".PadLeft(20));
+                    _game.MessageEvents.OnOutput($"skip {player.SkipCount} turn(s)".PadLeft(20));
                     player.SkipCount--;
                     continue;
                 }
 
                 if (player.IsInWell)
                 {
-                    _io.OutputMessage($"In {nameof(Well)}".PadLeft(20));
+                    _game.MessageEvents.OnOutput($"In {nameof(Well)}".PadLeft(20));
                     continue;
                 }
 
                 player.CurrentDiceThrow = _dice.Roll();
                 player.MovePosition(_game.Board);
-                _io.OutputMessage($"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}".PadLeft(20));
+                _game.MessageEvents.OnOutput($"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}".PadLeft(20));
 
                 player.Position.Act(player, _game);
             }
-            _io.OutputWithNewLineMessage(string.Empty);
+            _game.MessageEvents.OnOutputWithNewline(string.Empty);
         }
     }
 }

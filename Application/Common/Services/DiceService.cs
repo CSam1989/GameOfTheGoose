@@ -20,7 +20,7 @@ namespace Application.Common.Services
             {
                 diceThrows[i] = _random.Next(DiceSettings.Min, DiceSettings.Max + 1);
             }
-            //Next returs a value less then maxvalue => max dice throw = max value + 1
+            //Next returns a value less then maxvalue => max dice throw = max value + 1
             return diceThrows;
         }
     }

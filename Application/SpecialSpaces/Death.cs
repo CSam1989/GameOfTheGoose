@@ -17,8 +17,7 @@ namespace Application.SpecialSpaces
         {
             player.Position = game.Board.Spaces[SpecialPlaceSettings.DeathToGoSpace];
 
-            // TODO: Change the Console write to ioService 
-            Console.Write("-> Start");
+            game.MessageEvents.OnOutput("-> Start");
         }
     }
 }

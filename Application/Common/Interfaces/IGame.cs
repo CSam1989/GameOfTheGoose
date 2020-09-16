@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Application.Common.Delegates;
+using Application.Common.DelegatesEvents;
 using Application.Models;
 
 namespace Application.Common.Interfaces
@@ -11,5 +11,6 @@ namespace Application.Common.Interfaces
         Board Board { get; set; }
         int Turn { get; set; }
         bool HasWinner { get; set; }
+        IMessageEvents MessageEvents { get; set; }
     }
 }

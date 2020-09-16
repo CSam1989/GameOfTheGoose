@@ -9,6 +9,7 @@ namespace Presentation_Console
 {
     public class App
     {
+        private readonly IGame _game;
         private readonly IGameController _gameController;
         private readonly IIOService _io;
         private readonly IInputWithValidationService _input;
@@ -19,6 +20,7 @@ namespace Presentation_Console
             IIOService io,
             IInputWithValidationService input)
         {
+            _game = game;
             _gameController = gameController;
             _io = io;
             _input = input;
@@ -27,14 +29,19 @@ namespace Presentation_Console
         // Equivalent to Main in Program.cs
         public void Run()
         {
-            _io.OutputWithNewLineMessage($"Welcome to a game of goose! {Environment.NewLine}");
+            //Adds global exception handling
+            //AppDomain.CurrentDomain.UnhandledException += _exceptionHandler.UnhandledExceptionTrapper;
+
+            //assign handlers to events
+            _game.MessageEvents.OutputWithNewline += _io.OutputWithNewLineMessage;
+            _game.MessageEvents.Output += _io.OutputMessage;
+            _game.MessageEvents.Wait += _io.WaitForKey;
+
+            _game.MessageEvents.OnOutputWithNewline($"Welcome to a game of goose! {Environment.NewLine}");
 
             var playerCount = _input.InputPlayerCount();
 
             _gameController.Run(playerCount);
-            //Adds global exception handling
-            //AppDomain.CurrentDomain.UnhandledException += _exceptionHandler.UnhandledExceptionTrapper;
-
         }
     }
 }

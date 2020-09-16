@@ -20,15 +20,14 @@ namespace Application.SpecialSpaces
             {
                 player.MovePosition(game.Board);
 
-                // TODO: Change the Console write to ioService 
-                Console.Write($" -> S{player.Position.Number}");
+                game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
+
                 //if player moves again, he/she must act on the new space
                 player.Position.Act(player, game);
             }
             else
             {
-                // TODO: Change the Console write to ioService 
-                Console.Write($" -> S{player.Position.Number}");
+                game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
             }
         }
 

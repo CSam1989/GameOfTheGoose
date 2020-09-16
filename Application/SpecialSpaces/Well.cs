@@ -18,8 +18,7 @@ namespace Application.SpecialSpaces
             player.IsInWell = true;
             game.PlayersInWell.Add(player);
 
-            // TODO: Change the Console write to ioService 
-            Console.Write($" -> {this.GetType().Name}");
+            game.MessageEvents.OnOutput($" -> {this.GetType().Name}");
 
             if (game.PlayersInWell.Count <= 1) return;
 

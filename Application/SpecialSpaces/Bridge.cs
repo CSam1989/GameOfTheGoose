@@ -17,8 +17,7 @@ namespace Application.SpecialSpaces
         {
             player.Position = game.Board.Spaces[SpecialPlaceSettings.BridgeToGoSpace];
 
-            // TODO: Change the Console write to ioService 
-            Console.Write($" -> S{player.Position.Number}");
+            game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
         }
     }
 }

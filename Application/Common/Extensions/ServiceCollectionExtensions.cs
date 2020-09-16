@@ -24,6 +24,7 @@ namespace Application.Common.Extensions
             services.AddTransient<IValidationService, ValidationService>();
             services.AddTransient<IDiceService, DiceService>();
             services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IWinnerService, WinnerService>();
 
             return services;
         }

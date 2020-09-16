@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Services;
 using Application.Models;
 
 namespace Application.GameController
@@ -13,6 +14,7 @@ namespace Application.GameController
         private readonly IModelFactory _modelFactory;
         private readonly IGameBuilder _builder;
         private readonly IGameService _gameService;
+        private readonly IWinnerService _winnerService;
         public IGame Game { get; }
 
         public Director(
@@ -20,12 +22,14 @@ namespace Application.GameController
             IIOService io,
             IModelFactory modelFactory,
             IGameBuilder builder,
-            IGameService gameService)
+            IGameService gameService,
+            IWinnerService winnerService)
         {
             _io = io;
             _modelFactory = modelFactory;
             _builder = builder;
             _gameService = gameService;
+            _winnerService = winnerService;
             Game = game;
         }
 
@@ -51,6 +55,10 @@ namespace Application.GameController
 
                 _gameService.MovePieces(Game.Players);
             }
+
+            _winnerService.PrintWinner();
+            _io.OutputMessage("[PRESS ENTER TO FINISH GAME]");
+            _io.WaitForKey();
         }
     }
 }

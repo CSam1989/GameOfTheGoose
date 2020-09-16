@@ -14,7 +14,7 @@ namespace Application.SpecialSpaces
 
         public override void Act(Player player, IGame game)
         {
-            base.Act(player, game);
+            game.HasWinner = true;
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Application.GameController
             }
         }
 
-        public ICollection<Player> AddPlayers(int count)
+        public IList<Player> AddPlayers(int count)
         {
             var pieces = new List<Player>();
 

@@ -6,6 +6,6 @@ namespace Application.Common.Interfaces
     public interface IGameBuilder
     {
         void BuildBoard(Board board);
-        ICollection<Player> AddPlayers(int count);
+        IList<Player> AddPlayers(int count);
     }
 }

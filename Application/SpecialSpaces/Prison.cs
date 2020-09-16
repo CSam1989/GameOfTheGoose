@@ -13,11 +13,11 @@ namespace Application.SpecialSpaces
             _config = config;
         }
 
-        public override void Act(Player player, IGame game)
+        public override string Act(Player player, IGame game)
         {
             player.SkipCount = _config.SpecialPlaceSettings.PrisonSkipCount;
 
-            game.MessageEvents.OnOutput($"-> Skip {player.SkipCount}");
+            return $"-> Skip {player.SkipCount}";
         }
     }
 }

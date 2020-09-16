@@ -14,21 +14,16 @@ namespace Application.SpecialSpaces
             _config = config;
         }
 
-        public override void Act(Player player, IGame game)
+        public override string Act(Player player, IGame game)
         {
-            if (!ActOnSpecialThrow(player, game))
-            {
-                player.MovePosition(game.Board);
+            if (ActOnSpecialThrow(player, game)) return $" -> S{player.Position.Number}";
 
-                game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
+            player.MovePosition(game.Board);
 
-                //if player moves again, he/she must act on the new space
-                player.Position.Act(player, game);
-            }
-            else
-            {
-                game.MessageEvents.OnOutput($" -> S{player.Position.Number}");
-            }
+            return $" -> S{player.Position.Number}"
+                   //if player moves again, he/she must act on the new space
+                   + player.Position.Act(player, game);
+
         }
 
         private bool ActOnSpecialThrow(Player player, IGame game)

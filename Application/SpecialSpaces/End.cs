@@ -10,9 +10,10 @@ namespace Application.SpecialSpaces
         {
         }
 
-        public override void Act(Player player, IGame game)
+        public override string Act(Player player, IGame game)
         {
             game.HasWinner = true;
+            return string.Empty;
         }
     }
 }

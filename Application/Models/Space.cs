@@ -12,8 +12,9 @@ namespace Application.Models
         public int Number { get; set; }
 
         //Does nothing = Null Object Pattern
-        public virtual void Act(Player player, IGame game)
+        public virtual string Act(Player player, IGame game)
         {
+            return string.Empty;
         }
     }
 }

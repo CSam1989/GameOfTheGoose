@@ -13,11 +13,11 @@ namespace Application.SpecialSpaces
             _config = config;
         }
 
-        public override void Act(Player player, IGame game)
+        public override string Act(Player player, IGame game)
         {
             player.Position = game.Board.Spaces[_config.SpecialPlaceSettings.DeathToGoSpace];
 
-            game.MessageEvents.OnOutput("-> Start");
+            return "-> Start";
         }
     }
 }

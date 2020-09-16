@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Application.Common.Interfaces;
+﻿using System.Linq;
 using Application.Common.Interfaces.Models;
 using Application.Common.Settings;
 using Application.Models;
 
 namespace Application.SpecialSpaces
 {
-    public class Goose: Space
+    public class Goose : Space
     {
         public Goose(int number) : base(number)
         {
@@ -39,9 +35,10 @@ namespace Application.SpecialSpaces
                 if (game.Turn != specialThrow[0] || !player.CurrentDiceThrow.Contains(specialThrow[1]) ||
                     !player.CurrentDiceThrow.Contains(specialThrow[2])) continue;
                 player.Position = game.Board.Spaces[specialThrow[3]];
-                
+
                 return true;
             }
+
             return false;
         }
     }

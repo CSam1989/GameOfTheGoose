@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.services;
-using Application.Common.Settings;
 
 namespace Presentation_Console.Common.Services
 {
@@ -23,6 +19,7 @@ namespace Presentation_Console.Common.Services
         {
             return Console.ReadLine();
         }
+
         public void WaitForKey()
         {
             Console.ReadKey();

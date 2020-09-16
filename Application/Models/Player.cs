@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Application.Common.Settings;
 
 namespace Application.Models
@@ -12,6 +9,7 @@ namespace Application.Models
         {
             CurrentDiceThrow = new[] {0, 0}; //start of game, player hasn't thrown yet
         }
+
         public string Name { get; set; }
         public int[] CurrentDiceThrow { get; set; }
         public Space Position { get; set; }

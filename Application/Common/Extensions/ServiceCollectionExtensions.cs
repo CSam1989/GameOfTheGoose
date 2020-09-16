@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Common.DelegatesEvents;
+﻿using Application.Common.DelegatesEvents;
 using Application.Common.Factories;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.DelegatesEvents;
 using Application.Common.Interfaces.Factories;
 using Application.Common.Interfaces.GameController;

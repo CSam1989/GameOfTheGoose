@@ -1,11 +1,7 @@
-﻿using Application.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using Application.Common.Interfaces.GameController;
+using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
-using Application.Models;
-using IGame = Application.Common.Interfaces.Models.IGame;
 
 namespace Presentation_Console
 {
@@ -13,8 +9,8 @@ namespace Presentation_Console
     {
         private readonly IGame _game;
         private readonly IGameController _gameController;
-        private readonly IIOService _io;
         private readonly IInputWithValidationService _input;
+        private readonly IIOService _io;
 
         public App(
             IGame game,

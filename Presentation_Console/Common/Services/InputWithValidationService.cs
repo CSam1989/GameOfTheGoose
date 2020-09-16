@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Common.Interfaces;
-using Application.Common.Interfaces.services;
+﻿using Application.Common.Interfaces.services;
 using Application.Common.Settings;
 
 namespace Presentation_Console.Common.Services
@@ -19,6 +15,7 @@ namespace Presentation_Console.Common.Services
             _ioService = ioService;
             _validation = validation;
         }
+
         public int InputPlayerCount()
         {
             string input;
@@ -26,9 +23,11 @@ namespace Presentation_Console.Common.Services
 
             do
             {
-                _ioService.OutputMessage($"How many players want to join this game? (min {PlayerAmount.Min} & max {PlayerAmount.Max}): ");
+                _ioService.OutputMessage(
+                    $"How many players want to join this game? (min {PlayerAmount.Min} & max {PlayerAmount.Max}): ");
                 input = _ioService.InputMessage();
-            } while (!_validation.IsValidNumber(input, out playerCount) || !_validation.IsValidNumberOfPieces(playerCount));
+            } while (!_validation.IsValidNumber(input, out playerCount) ||
+                     !_validation.IsValidNumberOfPieces(playerCount));
 
             return playerCount;
         }

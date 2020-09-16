@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.Factories;
 using Application.Common.Settings;
 using Application.Models;
@@ -16,7 +13,7 @@ namespace Application.Common.Factories
 
         public ModelFactory(AppConfig config)
         {
-            this._config = config;
+            _config = config;
         }
 
         public Board CreateBoard()
@@ -28,11 +25,12 @@ namespace Application.Common.Factories
         {
             foreach (var specialSpace in _config.Spaces.SpecialSpaces)
                 if (specialSpace.Space == spaceNumber)
-                    return (Space)Activator.CreateInstance(
-                        Type.GetType($"Application.SpecialSpaces.{specialSpace.Name}"),
-                        new object[] { spaceNumber });
+                    return (Space) Activator.CreateInstance(
+                        Type.GetType($"Application.SpecialSpaces.{specialSpace.Name}"), spaceNumber);
 
-            return _config.Spaces.GoozeSpaces.Any(goosePlace => goosePlace == spaceNumber) ? new Goose(spaceNumber) : new Space(spaceNumber);
+            return _config.Spaces.GoozeSpaces.Any(goosePlace => goosePlace == spaceNumber)
+                ? new Goose(spaceNumber)
+                : new Space(spaceNumber);
         }
 
         public Player CreatePlayer(string name)

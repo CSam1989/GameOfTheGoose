@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Application.Common.Extensions;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.services;
 using Application.Common.Settings;
 using Microsoft.Extensions.Configuration;
@@ -9,9 +8,9 @@ using Presentation_Console.Common.Services;
 
 namespace Presentation_Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var services = ConfigureServices();
 
@@ -20,6 +19,7 @@ namespace Presentation_Console
             // Calls the Run method in App, which is replacing Main
             serviceProvider.GetService<App>().Run();
         }
+
         private static IServiceCollection ConfigureServices()
         {
             IServiceCollection services = new ServiceCollection();

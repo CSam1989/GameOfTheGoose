@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.Factories;
 using Application.Common.Interfaces.GameController;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
 using Application.Common.Interfaces.Services;
-using Application.Common.Services;
-using Application.Models;
 
 namespace Application.GameController
 {
     public class Director : IGameController
     {
-        private readonly IModelFactory _modelFactory;
         private readonly IGameBuilder _builder;
         private readonly IGameService _gameService;
+        private readonly IModelFactory _modelFactory;
         private readonly IWinnerService _winnerService;
-        public IGame Game { get; }
 
         public Director(
             IGame game,
@@ -35,6 +29,8 @@ namespace Application.GameController
             Game = game;
         }
 
+        public IGame Game { get; }
+
         public void Run(int playerCount)
         {
             Game.Board = _modelFactory.CreateBoard();
@@ -44,9 +40,9 @@ namespace Application.GameController
             Game.Players = _builder.AddPlayers(playerCount);
 
             Game.MessageEvents.OnOutputWithNewline(Game.Players.Aggregate(
-                                             "",
-                                             (current, piece) => current + $"{piece.Name}".PadLeft(20))
-                                         + Environment.NewLine);
+                                                       "",
+                                                       (current, piece) => current + $"{piece.Name}".PadLeft(20))
+                                                   + Environment.NewLine);
 
             while (!Game.HasWinner)
             {

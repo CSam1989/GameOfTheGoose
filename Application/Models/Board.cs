@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Common.Settings;
+﻿using Application.Common.Settings;
 
 namespace Application.Models
 {
@@ -9,8 +6,9 @@ namespace Application.Models
     {
         public Board()
         {
-            Spaces = new Space[BoardSettings.MaxSpaces + 1];// max spaces + starting space (=0)
+            Spaces = new Space[BoardSettings.MaxSpaces + 1]; // max spaces + starting space (=0)
         }
+
         public Space[] Spaces { get; set; }
     }
 }

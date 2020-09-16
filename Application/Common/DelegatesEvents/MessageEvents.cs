@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Common.Interfaces;
-using Application.Common.Interfaces.DelegatesEvents;
+﻿using Application.Common.Interfaces.DelegatesEvents;
 
 namespace Application.Common.DelegatesEvents
 {

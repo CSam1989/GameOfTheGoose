@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Common.Interfaces;
-using Application.Common.Interfaces.Models;
+﻿using Application.Common.Interfaces.Models;
 
 namespace Application.Models
 {
@@ -12,9 +8,12 @@ namespace Application.Models
         {
             Number = number;
         }
+
         public int Number { get; set; }
 
         //Does nothing = Null Object Pattern
-        public virtual void Act(Player player, IGame game) { }
+        public virtual void Act(Player player, IGame game)
+        {
+        }
     }
 }

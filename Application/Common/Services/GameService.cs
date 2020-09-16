@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Application.Common.Extensions;
-using Application.Common.Interfaces;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
-using Application.Common.Settings;
 using Application.Models;
 using Application.SpecialSpaces;
 
@@ -42,10 +37,12 @@ namespace Application.Common.Services
 
                 player.CurrentDiceThrow = _dice.Roll();
                 player.MovePosition(_game.Board);
-                _game.MessageEvents.OnOutput($"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}".PadLeft(20));
+                _game.MessageEvents.OnOutput(
+                    $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}".PadLeft(20));
 
                 player.Position.Act(player, _game);
             }
+
             _game.MessageEvents.OnOutputWithNewline(string.Empty);
         }
     }

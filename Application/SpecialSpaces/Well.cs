@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Application.Common.Interfaces;
+﻿using System.Linq;
 using Application.Common.Interfaces.Models;
 using Application.Models;
 
 namespace Application.SpecialSpaces
 {
-    public class Well: Space
+    public class Well : Space
     {
         public Well(int number) : base(number)
         {
@@ -19,7 +15,7 @@ namespace Application.SpecialSpaces
             player.IsInWell = true;
             game.PlayersInWell.Add(player);
 
-            game.MessageEvents.OnOutput($" -> {this.GetType().Name}");
+            game.MessageEvents.OnOutput($" -> {GetType().Name}");
 
             if (game.PlayersInWell.Count <= 1) return;
 

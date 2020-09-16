@@ -30,6 +30,8 @@ namespace Application.SpecialSpaces
                 if (game.Turn != specialThrow[0] || !player.CurrentDiceThrow.Contains(specialThrow[1]) ||
                     !player.CurrentDiceThrow.Contains(specialThrow[2])) continue;
                 player.Position = game.Board.Spaces[specialThrow[3] - 1];
+                //if player moves again, he/she must act on the new space
+                player.Position.Act(player, game);
                 return true;
             }
             return false;

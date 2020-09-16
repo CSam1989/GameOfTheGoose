@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Application.Common.Settings;
 
@@ -17,9 +18,15 @@ namespace Application.Models
         public int SkipCount { get; set; }
         public bool IsInWell { get; set; }
 
-        public void MovePosition(int dice, Board board)
+        public void MovePosition(int[] dice, Board board)
         {
+            var indexNewPosition = Position.Number + dice.Sum();
 
+            //Extra logic for when piece is above the end space
+            if (indexNewPosition > BoardSettings.MaxSpaces)
+                indexNewPosition -= (indexNewPosition - BoardSettings.MaxSpaces) * 2;
+
+            Position = board.Spaces[indexNewPosition];
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Application.Models
 
         public virtual void Act(Player player)
         {
-
+            Console.WriteLine($"{Number}: Space test");
         }
     }
 }

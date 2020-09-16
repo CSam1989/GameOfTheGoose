@@ -12,17 +12,20 @@ namespace Application.GameController
         private readonly IIOService _io;
         private readonly IModelFactory _modelFactory;
         private readonly IGameBuilder _builder;
+        private readonly IGameService _gameService;
         public IGame Game { get; }
 
         public Director(
             IGame game,
             IIOService io,
             IModelFactory modelFactory,
-            IGameBuilder builder)
+            IGameBuilder builder,
+            IGameService gameService)
         {
             _io = io;
             _modelFactory = modelFactory;
             _builder = builder;
+            _gameService = gameService;
             Game = game;
         }
 
@@ -46,6 +49,8 @@ namespace Application.GameController
                 _io.WaitForKey();
                 _io.OutputWithNewLineMessage($"Turn {Game.Turn} {Environment.NewLine}");
 
+                _gameService.MovePieces(Game.Players, Game.Board);
+                _gameService.ActOnNewPosition(Game.Players);
             }
         }
     }

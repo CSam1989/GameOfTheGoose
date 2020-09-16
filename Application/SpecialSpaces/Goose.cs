@@ -25,16 +25,13 @@ namespace Application.SpecialSpaces
 
         private bool ActOnSpecialThrow(Player player, IGame game)
         {
-            if (game.Turn == SpecialGooseSettings.Throw)
+            foreach (var specialThrow in SpecialPlaceSettings.SpecialGooseThrows)
             {
-                foreach (var specialThrow in SpecialGooseSettings.SpecialThrows)
-                {
-                    if (!player.CurrentDiceThrow.Contains(specialThrow[0]) ||
-                        !player.CurrentDiceThrow.Contains(specialThrow[1])) continue;
-                    player.Position = game.Board.Spaces[specialThrow[2] - 1];
-                    return true;
-                }
-            };
+                if (game.Turn != specialThrow[0] || !player.CurrentDiceThrow.Contains(specialThrow[1]) ||
+                    !player.CurrentDiceThrow.Contains(specialThrow[2])) continue;
+                player.Position = game.Board.Spaces[specialThrow[3] - 1];
+                return true;
+            }
             return false;
         }
     }

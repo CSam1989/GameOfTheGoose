@@ -18,7 +18,7 @@ namespace Application.SpecialSpaces
             player.SkipCount = SpecialPlaceSettings.InnSkipCount;
 
             // TODO: Change the Console write to ioService 
-            Console.Write($": Skip {SpecialPlaceSettings.InnSkipCount};");
+            Console.Write($"-> Skip {SpecialPlaceSettings.InnSkipCount}");
         }
     }
 }

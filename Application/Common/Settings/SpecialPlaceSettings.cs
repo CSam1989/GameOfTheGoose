@@ -15,6 +15,7 @@ namespace Application.Common.Settings
         };
 
         public const int BridgeToGoSpace = 12;
+        public const int MazeToGoSpace = 12;
         public const int InnSkipCount = 1;
         public const int PrisonSkipCount = 3;
     }

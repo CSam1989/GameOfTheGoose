@@ -49,7 +49,7 @@ namespace Application.GameController
             while (!Game.HasWinner)
             {
                 Game.Turn++;
-                _io.OutputMessage($"[PRESS ENTER TO PLAY TURN {Game.Turn}]");
+                _io.OutputWithNewLineMessage($"[PRESS ENTER TO PLAY TURN {Game.Turn}]");
                 _io.WaitForKey();
                 _io.OutputWithNewLineMessage($"Turn {Game.Turn} {Environment.NewLine}");
 

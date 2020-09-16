@@ -24,21 +24,21 @@ namespace Application.Common.Services
             {
                 if (player.SkipCount > 0)
                 {
-                    _game.MessageEvents.OnOutput($"skip {player.SkipCount} turn(s)".PadLeft(20));
+                    _game.MessageEvents.OnOutputAligned($"skip {player.SkipCount} turn(s)");
                     player.SkipCount--;
                     continue;
                 }
 
                 if (player.IsInWell)
                 {
-                    _game.MessageEvents.OnOutput($"In {nameof(Well)}".PadLeft(20));
+                    _game.MessageEvents.OnOutputAligned($"In {nameof(Well)}");
                     continue;
                 }
 
                 player.CurrentDiceThrow = _dice.Roll();
                 player.MovePosition(_game.Board);
-                _game.MessageEvents.OnOutput(
-                    $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}".PadLeft(20));
+                _game.MessageEvents.OnOutputAligned(
+                    $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}");
 
                 player.Position.Act(player, _game);
             }

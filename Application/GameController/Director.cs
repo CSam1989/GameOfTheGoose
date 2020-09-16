@@ -39,10 +39,11 @@ namespace Application.GameController
 
             Game.Players = _builder.AddPlayers(playerCount);
 
-            Game.MessageEvents.OnOutputWithNewline(Game.Players.Aggregate(
-                                                       "",
-                                                       (current, piece) => current + $"{piece.Name}".PadLeft(20))
-                                                   + Environment.NewLine);
+            foreach (var player in Game.Players)
+            {
+                Game.MessageEvents.OnOutputAligned(player.Name);
+            }
+            Game.MessageEvents.OnOutputWithNewline(string.Empty);
 
             while (!Game.HasWinner)
             {

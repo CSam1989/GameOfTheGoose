@@ -32,6 +32,7 @@ namespace Presentation_Console
 
             //assign handlers to events
             _game.MessageEvents.OutputWithNewline += _io.OutputWithNewLineMessage;
+            _game.MessageEvents.OutputAligned += _io.OutputMessageAligned;
             _game.MessageEvents.Output += _io.OutputMessage;
             _game.MessageEvents.Wait += _io.WaitForKey;
 

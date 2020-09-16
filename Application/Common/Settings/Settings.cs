@@ -8,5 +8,6 @@
         public int ThrowAmount { get; set; }
         public int MinPlayers { get; set; }
         public int MaxPlayers { get; set; }
+        public int OutputAlign { get; set; }
     }
 }

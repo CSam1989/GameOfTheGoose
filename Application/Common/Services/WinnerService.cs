@@ -20,7 +20,7 @@ namespace Application.Common.Services
         {
             var winner = _game.Players.First(p => p.Position.Number == _config.Settings.MaxSpaces);
 
-            _game.MessageEvents.OnOutputWithNewline("Winner".PadLeft((_game.Players.IndexOf(winner) + 1) * 20));
+            _game.MessageEvents.OnOutputWithNewline("Winner".PadLeft((_game.Players.IndexOf(winner) + 1) * _config.Settings.OutputAlign));
         }
     }
 }

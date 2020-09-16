@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Settings;
 using Application.Models;
 
 namespace Application.SpecialSpaces
@@ -14,7 +15,10 @@ namespace Application.SpecialSpaces
 
         public override void Act(Player player, IGame game)
         {
-            base.Act(player, game);
+            player.SkipCount = SpecialPlaceSettings.PrisonSkipCount;
+
+            // TODO: Change the Console write to ioService 
+            Console.Write($": Skip {SpecialPlaceSettings.PrisonSkipCount}");
         }
     }
 }

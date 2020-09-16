@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Settings;
 using Application.Models;
 
 namespace Application.SpecialSpaces
@@ -14,7 +16,26 @@ namespace Application.SpecialSpaces
 
         public override void Act(Player player, IGame game)
         {
-            player.MovePosition(game.Board);
+            if (!ActOnSpecialThrow(player, game))
+                player.MovePosition(game.Board);
+
+            // TODO: Change the Console write to ioService 
+            Console.Write($" -> S{player.Position.Number}");
+        }
+
+        private bool ActOnSpecialThrow(Player player, IGame game)
+        {
+            if (game.Turn == SpecialGooseSettings.Throw)
+            {
+                foreach (var specialThrow in SpecialGooseSettings.SpecialThrows)
+                {
+                    if (!player.CurrentDiceThrow.Contains(specialThrow[0]) ||
+                        !player.CurrentDiceThrow.Contains(specialThrow[1])) continue;
+                    player.Position = game.Board.Spaces[specialThrow[2] - 1];
+                    return true;
+                }
+            };
+            return false;
         }
     }
 }

@@ -49,8 +49,7 @@ namespace Application.GameController
                 _io.WaitForKey();
                 _io.OutputWithNewLineMessage($"Turn {Game.Turn} {Environment.NewLine}");
 
-                _gameService.MovePieces(Game.Players, Game.Board);
-                _gameService.ActOnNewPosition(Game.Players);
+                _gameService.MovePieces(Game.Players);
             }
         }
     }

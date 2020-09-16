@@ -15,5 +15,6 @@ namespace Application.Common.Settings
         };
 
         public const int BridgeToGoSpace = 12;
+        public const int InnSkipCount = 1;
     }
 }

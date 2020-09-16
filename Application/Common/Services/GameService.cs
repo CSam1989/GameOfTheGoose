@@ -24,9 +24,15 @@ namespace Application.Common.Services
 
         public void MovePieces(ICollection<Player> players)
         {
-
             foreach (var player in players)
             {
+                if (player.SkipCount > 0)
+                {
+                    _io.OutputMessage($"skip {player.SkipCount} turn(s)".PadLeft(20));
+                    player.SkipCount--;
+                    continue;
+                }
+
                 player.CurrentDiceThrow = _dice.Roll();
                 player.MovePosition(_game.Board);
                 _io.OutputMessage($"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}".PadLeft(20));

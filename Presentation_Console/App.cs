@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Application.Common.Interfaces.GameController;
+using Application.Common.Interfaces.services;
 using Application.Models;
-using IGame = Application.Common.Interfaces.IGame;
+using IGame = Application.Common.Interfaces.Models.IGame;
 
 namespace Presentation_Console
 {

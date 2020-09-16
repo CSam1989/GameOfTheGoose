@@ -1,6 +1,6 @@
 ﻿using Application.Models;
 
-namespace Application.Common.Interfaces
+namespace Application.Common.Interfaces.Factories
 {
     public interface IModelFactory
     {

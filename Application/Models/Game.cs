@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Application.Common.DelegatesEvents;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.DelegatesEvents;
+using Application.Common.Interfaces.Models;
 
 namespace Application.Models
 {

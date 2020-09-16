@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.Models;
 using Application.Common.Settings;
 using Application.Models;
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Application.Models;
 
-namespace Application.Common.Interfaces
+namespace Application.Common.Interfaces.GameController
 {
     public interface IGameBuilder
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Application.Common.DelegatesEvents;
+using Application.Common.Interfaces.DelegatesEvents;
 using Application.Models;
 
-namespace Application.Common.Interfaces
+namespace Application.Common.Interfaces.Models
 {
     public interface IGame
     {

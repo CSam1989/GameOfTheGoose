@@ -1,6 +1,6 @@
-﻿using Application.Models;
+﻿using Application.Common.Interfaces.Models;
 
-namespace Application.Common.Interfaces
+namespace Application.Common.Interfaces.GameController
 {
     public interface IGameController
     {

@@ -1,6 +1,6 @@
 ﻿using Application.Common.DelegatesEvents;
 
-namespace Application.Common.Interfaces
+namespace Application.Common.Interfaces.DelegatesEvents
 {
     public interface IMessageEvents
     {

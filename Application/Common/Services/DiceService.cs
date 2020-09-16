@@ -1,5 +1,6 @@
 ﻿using System;
 using Application.Common.Interfaces;
+using Application.Common.Interfaces.services;
 using Application.Common.Settings;
 
 namespace Application.Common.Services

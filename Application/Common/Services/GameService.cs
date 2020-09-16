@@ -6,6 +6,7 @@ using Application.Common.Extensions;
 using Application.Common.Interfaces;
 using Application.Common.Settings;
 using Application.Models;
+using Application.SpecialSpaces;
 
 namespace Application.Common.Services
 {
@@ -30,6 +31,12 @@ namespace Application.Common.Services
                 {
                     _io.OutputMessage($"skip {player.SkipCount} turn(s)".PadLeft(20));
                     player.SkipCount--;
+                    continue;
+                }
+
+                if (player.IsInWell)
+                {
+                    _io.OutputMessage($"In {nameof(Well)}".PadLeft(20));
                     continue;
                 }
 

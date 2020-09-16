@@ -8,6 +8,12 @@ namespace Application.Models
 {
     public class Game : IGame
     {
+        public Game()
+        {
+            Players = new List<Player>();
+            PlayersInWell = new List<Player>();
+        }
+
         public IList<Player> Players { get; set; }
         public IList<Player> PlayersInWell { get; set; }
         public Board Board { get; set; }

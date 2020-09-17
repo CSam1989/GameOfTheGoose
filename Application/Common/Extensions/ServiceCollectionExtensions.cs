@@ -19,6 +19,7 @@ namespace Application.Common.Extensions
         {
             //Add Services To IOC Container
             services.AddTransient<IModelFactory, ModelFactory>();
+            services.AddTransient<ISpaceActionFactory, SpaceActionFactory>();
 
             services.AddSingleton<IGame, Game>(); //Singleton because it has state
             services.AddTransient<IGameBuilder, GameBuilder>();

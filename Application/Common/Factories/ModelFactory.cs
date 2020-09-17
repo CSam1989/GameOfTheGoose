@@ -2,18 +2,20 @@
 using System.Linq;
 using Application.Common.Interfaces.Factories;
 using Application.Common.Settings;
+using Application.Common.Strategies;
 using Application.Models;
-using Application.SpecialSpaces;
 
 namespace Application.Common.Factories
 {
     public class ModelFactory : IModelFactory
     {
         private readonly AppConfig _config;
+        private readonly ISpaceActionFactory _spaceActionFactory;
 
-        public ModelFactory(AppConfig config)
+        public ModelFactory(AppConfig config, ISpaceActionFactory spaceActionFactory)
         {
             _config = config;
+            _spaceActionFactory = spaceActionFactory;
         }
 
         public Board CreateBoard()
@@ -23,14 +25,7 @@ namespace Application.Common.Factories
 
         public Space CreateSpace(int spaceNumber)
         {
-            foreach (var specialSpace in _config.SpecialSpaces)
-                if (specialSpace.Space == spaceNumber)
-                    return (Space) Activator.CreateInstance(
-                        Type.GetType($"Application.SpecialSpaces.{specialSpace.Name}"), new object[] {spaceNumber, _config});
-
-            return _config.GooseSpaces.Any(goosePlace => goosePlace == spaceNumber)
-                ? new Goose(spaceNumber, _config)
-                : new Space(spaceNumber);
+            return new Space(spaceNumber) {SpaceAction = _spaceActionFactory.CreateSpaceAction(spaceNumber)};
         }
 
         public Player CreatePlayer(string name)

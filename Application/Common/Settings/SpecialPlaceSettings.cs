@@ -8,10 +8,6 @@
         public int InnSkipCount { get; set; }
         public int PrisonSkipCount { get; set; }
 
-        /// <summary>
-        ///     SpecialThrow gives an array which contains an array with values (0: throw / 1: dice 1 / 2: dice 2 / 3:
-        ///     position to go to)
-        /// </summary>
-        public int[][] SpecialGooseThrows { get; set; }
+        public SpecialGooseThrows[] SpecialGooseThrows { get; set; }
     }
 }

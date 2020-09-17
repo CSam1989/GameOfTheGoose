@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces.Models;
+using Application.Common.Interfaces.Strategies;
 
 namespace Application.Models
 {
@@ -11,10 +12,6 @@ namespace Application.Models
 
         public int Number { get; set; }
 
-        //Does nothing = Null Object Pattern
-        public virtual string Act(Player player, IGame game)
-        {
-            return string.Empty;
-        }
+        public IAct SpaceAction { get; set; }
     }
 }

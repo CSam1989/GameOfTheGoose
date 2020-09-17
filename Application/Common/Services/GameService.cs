@@ -2,8 +2,8 @@
 using Application.Common.Extensions;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
+using Application.Common.Strategies;
 using Application.Models;
-using Application.SpecialSpaces;
 
 namespace Application.Common.Services
 {
@@ -36,7 +36,7 @@ namespace Application.Common.Services
 
                 if (player.IsInWell)
                 {
-                    _game.MessageEvents.OnOutputAligned($"In {nameof(Well)}");
+                    _game.MessageEvents.OnOutputAligned($"In Well");
                     continue;
                 }
 
@@ -45,7 +45,7 @@ namespace Application.Common.Services
 
                 var outputToReturn = $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}";
 
-                outputToReturn += player.Position.Act(player, _game);
+                outputToReturn += player.Position.SpaceAction.Act(player);
 
                 _game.MessageEvents.OnOutputAligned(outputToReturn);
             }

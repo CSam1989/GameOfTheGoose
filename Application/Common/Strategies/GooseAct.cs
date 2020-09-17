@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Application.Common.Interfaces.Models;
+using Application.Common.Interfaces.Services;
 using Application.Common.Interfaces.Strategies;
 using Application.Common.Settings;
 using Application.Models;
@@ -13,18 +14,20 @@ namespace Application.Common.Strategies
     {
         private readonly AppConfig _config;
         private readonly IGame _game;
+        private readonly IPlayerMovementService _playerMovement;
 
-        public GooseAct(AppConfig config, IGame game)
+        public GooseAct(AppConfig config, IGame game, IPlayerMovementService playerMovement)
         {
             _config = config;
             _game = game;
+            _playerMovement = playerMovement;
         }
 
         public string Act(Player player)
         {
             if (ActOnSpecialThrow(player, _game)) return $" -> S{player.Position.Number}";
 
-            player.MovePosition(_game.Board);
+            _playerMovement.MovePosition(player, _game.Board);
 
             return $" -> S{player.Position.Number}"
                    //if player moves again, he/she must act on the new space

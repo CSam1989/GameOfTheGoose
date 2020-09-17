@@ -2,6 +2,7 @@
 using Application.Common.Extensions;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
+using Application.Common.Interfaces.Services;
 using Application.Common.Strategies;
 using Application.Models;
 
@@ -11,11 +12,13 @@ namespace Application.Common.Services
     {
         private readonly IDiceService _dice;
         private readonly IGame _game;
+        private readonly IPlayerMovementService _playerMovement;
 
-        public GameService(IDiceService dice, IGame game)
+        public GameService(IDiceService dice, IGame game, IPlayerMovementService playerMovement)
         {
             _dice = dice;
             _game = game;
+            _playerMovement = playerMovement;
         }
 
 
@@ -41,7 +44,7 @@ namespace Application.Common.Services
                 }
 
                 player.CurrentDiceThrow = _dice.Roll();
-                player.MovePosition(_game.Board);
+                _playerMovement.MovePosition(player, _game.Board);
 
                 var outputToReturn = $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}";
 

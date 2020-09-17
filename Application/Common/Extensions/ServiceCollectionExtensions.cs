@@ -29,6 +29,7 @@ namespace Application.Common.Extensions
             services.AddTransient<IDiceService, DiceService>();
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<IWinnerService, WinnerService>();
+            services.AddTransient<IPlayerMovementService, PlayerMovementService>();
 
             services.AddTransient<IMessageEvents, MessageEvents>();
 

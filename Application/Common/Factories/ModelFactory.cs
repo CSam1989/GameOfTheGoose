@@ -20,7 +20,7 @@ namespace Application.Common.Factories
 
         public Board CreateBoard()
         {
-            return new Board(_config);
+            return new Board(_config.Settings.MaxSpaces);
         }
 
         public Space CreateSpace(int spaceNumber)
@@ -30,7 +30,7 @@ namespace Application.Common.Factories
 
         public Player CreatePlayer(string name)
         {
-            return new Player(_config)
+            return new Player()
             {
                 Name = name,
                 Position = CreateSpace(0)

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Application.Common.Interfaces.Factories;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.Services;
@@ -29,14 +27,13 @@ namespace Application.Common.Factories
             try
             {
                 var space = _config.SpecialSpaces.FirstOrDefault(s => s.Space == spaceNumber);
-                return (IAct)Activator.CreateInstance(
-                    Type.GetType($"Application.Common.Strategies.{space.Name}Act"),
-                    new object[] { _config, _game });
+                return (IAct) Activator.CreateInstance(
+                    Type.GetType($"Application.Common.Strategies.{space.Name}Act"), _config, _game);
             }
             catch
             {
                 //If not a special place => check if its a goose special place
-                if(_config.GooseSpaces.Contains(spaceNumber))
+                if (_config.GooseSpaces.Contains(spaceNumber))
                     return new GooseAct(_config, _game, _playerMovement);
                 //Else return an empty Act (regular spaces)
                 return new EmptyAct();

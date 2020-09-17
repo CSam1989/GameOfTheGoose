@@ -1,5 +1,4 @@
-﻿using Application.Common.Interfaces.Models;
-using Application.Common.Interfaces.Strategies;
+﻿using Application.Common.Interfaces.Strategies;
 
 namespace Application.Models
 {

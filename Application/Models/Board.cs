@@ -1,6 +1,4 @@
-﻿using Application.Common.Settings;
-
-namespace Application.Models
+﻿namespace Application.Models
 {
     public class Board
     {

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Linq;
-using Application.Common.Interfaces.Factories;
+﻿using Application.Common.Interfaces.Factories;
 using Application.Common.Settings;
-using Application.Common.Strategies;
 using Application.Models;
 
 namespace Application.Common.Factories
@@ -30,7 +27,7 @@ namespace Application.Common.Factories
 
         public Player CreatePlayer(string name)
         {
-            return new Player()
+            return new Player
             {
                 Name = name,
                 Position = CreateSpace(0)

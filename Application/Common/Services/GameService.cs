@@ -3,7 +3,6 @@ using Application.Common.Extensions;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
 using Application.Common.Interfaces.Services;
-using Application.Common.Strategies;
 using Application.Models;
 
 namespace Application.Common.Services
@@ -39,7 +38,7 @@ namespace Application.Common.Services
 
                 if (player.IsInWell)
                 {
-                    _game.MessageEvents.OnOutputAligned($"In Well");
+                    _game.MessageEvents.OnOutputAligned("In Well");
                     continue;
                 }
 

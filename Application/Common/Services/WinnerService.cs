@@ -7,8 +7,8 @@ namespace Application.Common.Services
 {
     public class WinnerService : IWinnerService
     {
-        private readonly IGame _game;
         private readonly AppConfig _config;
+        private readonly IGame _game;
 
         public WinnerService(IGame game, AppConfig config)
         {
@@ -21,7 +21,8 @@ namespace Application.Common.Services
             var winner = _game.Players.First(p => p.Position.Number == _config.Settings.MaxSpaces);
 
             //Hier maak ik geen gebruik van de aligned output omdat ik hier moet alignen op een bepaalde column en niet moet verderbouwen op vorige output
-            _game.MessageEvents.OnOutputWithNewline("Winner".PadLeft((_game.Players.IndexOf(winner) + 1) * _config.Settings.OutputAlign));
+            _game.MessageEvents.OnOutputWithNewline(
+                "Winner".PadLeft((_game.Players.IndexOf(winner) + 1) * _config.Settings.OutputAlign));
         }
     }
 }

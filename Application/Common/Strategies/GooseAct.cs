@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.Services;
 using Application.Common.Interfaces.Strategies;
@@ -10,7 +7,7 @@ using Application.Models;
 
 namespace Application.Common.Strategies
 {
-    public class GooseAct: IAct
+    public class GooseAct : IAct
     {
         private readonly AppConfig _config;
         private readonly IGame _game;

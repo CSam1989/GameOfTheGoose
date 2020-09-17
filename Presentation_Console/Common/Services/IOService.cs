@@ -12,6 +12,7 @@ namespace Presentation_Console.Common.Services
         {
             _config = config;
         }
+
         public void OutputWithNewLineMessage(string message)
         {
             Console.WriteLine(message);

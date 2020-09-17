@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using Application.Common.Interfaces.Services;
-using Application.Common.Settings;
-
-namespace Application.Models
+﻿namespace Application.Models
 {
     public class Player
     {

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Application.Common.Interfaces.Handlers;
 using Application.Common.Interfaces.services;
-using Presentation_Console.Common.Services;
 
 namespace Presentation_Console.Common.Handlers
 {

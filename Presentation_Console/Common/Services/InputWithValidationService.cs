@@ -5,9 +5,9 @@ namespace Presentation_Console.Common.Services
 {
     public class InputWithValidationService : IInputWithValidationService
     {
+        private readonly AppConfig _config;
         private readonly IIOService _ioService;
         private readonly IValidationService _validation;
-        private readonly AppConfig _config;
 
         public InputWithValidationService(
             IIOService ioService,

@@ -8,10 +8,10 @@ namespace Presentation_Console
 {
     public class App
     {
+        private readonly IExceptionHandler _exceptionHandler;
         private readonly IGame _game;
         private readonly IGameController _gameController;
         private readonly IInputWithValidationService _input;
-        private readonly IExceptionHandler _exceptionHandler;
         private readonly IIOService _io;
 
         public App(

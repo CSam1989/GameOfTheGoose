@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Application.Common.Interfaces.Factories;
 using Application.Common.Interfaces.GameController;
 using Application.Common.Interfaces.Models;
@@ -39,10 +38,7 @@ namespace Application.GameController
 
             Game.Players = _builder.AddPlayers(playerCount);
 
-            foreach (var player in Game.Players)
-            {
-                Game.MessageEvents.OnOutputAligned(player.Name);
-            }
+            foreach (var player in Game.Players) Game.MessageEvents.OnOutputAligned(player.Name);
             Game.MessageEvents.OnOutputWithNewline(string.Empty);
 
             while (!Game.HasWinner)

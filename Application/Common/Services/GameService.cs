@@ -18,6 +18,11 @@ namespace Application.Common.Services
             _game = game;
         }
 
+
+        // Hier ben ik niet 100% of dit wel SRP is?? omdat ik hier de players verzet + output doorgeef
+        // Ik heb hier toch voor gekozen omdat ik dan mijn onoutputalign event kan gebruiken die ergens 1x gedefinieerd is
+        // Mocht ik dan de alignment willen veranderen, dan hoef ik dit maar op 1 plek te doen ipv hier een padleft op verschillende plekken
+        // DRY > SRP ???
         public void MovePieces(ICollection<Player> players)
         {
             foreach (var player in players)
@@ -37,10 +42,12 @@ namespace Application.Common.Services
 
                 player.CurrentDiceThrow = _dice.Roll();
                 player.MovePosition(_game.Board);
-                _game.MessageEvents.OnOutputAligned(
-                    $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}");
 
-                player.Position.Act(player, _game);
+                var outputToReturn = $"{player.CurrentDiceThrow.DiceThrowsToString()}: S{player.Position.Number}";
+
+                outputToReturn += player.Position.Act(player, _game);
+
+                _game.MessageEvents.OnOutputAligned(outputToReturn);
             }
 
             _game.MessageEvents.OnOutputWithNewline(string.Empty);

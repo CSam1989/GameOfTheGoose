@@ -4,9 +4,10 @@ namespace Application.Models
 {
     public class Space
     {
-        public Space(int number)
+        public Space(int number, IAct spaceAction)
         {
             Number = number;
+            SpaceAction = spaceAction;
         }
 
         public int Number { get; set; }

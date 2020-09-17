@@ -22,7 +22,7 @@ namespace Application.Common.Factories
 
         public Space CreateSpace(int spaceNumber)
         {
-            return new Space(spaceNumber) {SpaceAction = _spaceActionFactory.CreateSpaceAction(spaceNumber)};
+            return new Space(spaceNumber, _spaceActionFactory.CreateSpaceAction(spaceNumber));
         }
 
         public Player CreatePlayer(string name)

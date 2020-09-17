@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using Application.Common.Extensions;
+using Application.Common.Interfaces.Handlers;
 using Application.Common.Interfaces.services;
 using Application.Common.Settings;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Presentation_Console.Common.Handlers;
 using Presentation_Console.Common.Services;
 
 namespace Presentation_Console
@@ -39,6 +41,7 @@ namespace Presentation_Console
             //Add Services To IOC Container
             services.AddTransient<IIOService, IOService>();
             services.AddTransient<IInputWithValidationService, InputWithValidationService>();
+            services.AddTransient<IExceptionHandler, CustomGlobalExceptionHandler>();
 
             services.AddTransient<App>();
 

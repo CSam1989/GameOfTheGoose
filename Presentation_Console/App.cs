@@ -1,5 +1,6 @@
 ﻿using System;
 using Application.Common.Interfaces.GameController;
+using Application.Common.Interfaces.Handlers;
 using Application.Common.Interfaces.Models;
 using Application.Common.Interfaces.services;
 
@@ -10,25 +11,28 @@ namespace Presentation_Console
         private readonly IGame _game;
         private readonly IGameController _gameController;
         private readonly IInputWithValidationService _input;
+        private readonly IExceptionHandler _exceptionHandler;
         private readonly IIOService _io;
 
         public App(
             IGame game,
             IGameController gameController,
             IIOService io,
-            IInputWithValidationService input)
+            IInputWithValidationService input,
+            IExceptionHandler exceptionHandler)
         {
             _game = game;
             _gameController = gameController;
             _io = io;
             _input = input;
+            _exceptionHandler = exceptionHandler;
         }
 
         // Equivalent to Main in Program.cs
         public void Run()
         {
             //Adds global exception handling
-            //AppDomain.CurrentDomain.UnhandledException += _exceptionHandler.UnhandledExceptionTrapper;
+            AppDomain.CurrentDomain.UnhandledException += _exceptionHandler.UnhandledExceptionTrapper;
 
             //assign handlers to events
             _game.MessageEvents.OutputWithNewline += _io.OutputWithNewLineMessage;
